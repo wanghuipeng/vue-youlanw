@@ -3,7 +3,7 @@ var express = require('express');
 var request = require('superagent')
 
 var app = express();
-var HOST = 'https://life-api.youlanw.com/api/v5'
+var HOST = '不告诉你'
 
 /**
  * CORS support.
