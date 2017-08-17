@@ -11,12 +11,13 @@ export default {
 </script>
 
 <style>
-body{background-color: #fff;}
+body{background: #fff;}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: #f0f0f0;
 }
 </style>

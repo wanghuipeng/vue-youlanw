@@ -25,9 +25,30 @@
       	<div class="footer clearfix">
 					<span class="loop">{{chatDetailData.circle.name}}</span>
 				  <p class="interact">
-				  	<span>{{count1}}赞：{{chatDetailData.praiseCount}}</span><span>{{count2}}回复：{{chatDetailData.commentCount}}</span>
+				  	<span @click="praiseCount">{{count1}}赞：{{chatDetailData.praiseCount}}</span><span @click="praiseCount">{{count2}}回复：{{chatDetailData.commentCount}}</span>
 				  </p>
 				</div>
+      </div>
+      
+      <div class="comments">
+      	<p class="title">最新评论({{chatDetailData.commentCount}})</p>
+      	<div class="comment">
+      		<ul v-for="item in chatDetailData.comments">
+      			<li class="comment-l">
+      				<template v-if="item.userAvatar != 0">
+							  <img :src="item.userAvatar" />
+							</template>
+							<template v-else>
+							  <img  src="http://m.youlanw.com:80/static/images/default-portrait.png" />
+							</template>
+      				<p class="time">{{item.publishTime}}</p>
+      			</li>
+      			<li class="comment-r">
+      				<p class="name">{{item.userName}}</p>
+      				<p class="text">{{item.content}}</p>
+      			</li>
+      		</ul>
+      	</div>
       </div>
 		</div>
 		<div class="chat-bar">
@@ -63,12 +84,15 @@
               });
     },
     methods: {
-     
+     ...mapActions([
+				'praiseCount',
+				'commentCount'
+			])
     }
   };
 </script>
 <style scoped>
-.chatDetail{padding-bottom: 10px;margin-bottom: 70px;}
+.chatDetail{padding-bottom: 10px;margin-bottom: 70px;background-color: #fff;}
 .detail{border-bottom: 1px solid #eee;padding-bottom: 10px;}
 .top{position: relative;}
 .top .top-left{position: absolute;left: 15px;top: 15px;}
@@ -105,4 +129,14 @@
     color: #fff;
     border: none;
     border-radius: 5px;}
+    .comments{padding:10px 15px;}
+    .comments .title{text-align: left;font-size: 14px;}
+    .comment{padding: 10px 0;}
+    .comment ul{position: relative;min-height: 65px;}
+    .comment .comment-l{position: absolute;left: 0;top: 0px;width: 80px;}
+    .comment .comment-l img{width: 45px;height: 45px;border-radius: 100%;}
+    .comment .comment-l .time{margin-top: 5px;color: #999;max-width: 80px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+    .comment .comment-r{padding-left: 90px;text-align: left;margin-bottom: 15px;color: #999;}
+    .comment .comment-r .name{font-size: 14px;margin-bottom: 10px;}
+    .comment .comment-r .text{padding: 10px;background-color: #fafafa;border-radius: 6px;}
 </style>

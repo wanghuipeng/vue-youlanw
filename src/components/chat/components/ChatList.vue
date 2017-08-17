@@ -26,10 +26,15 @@
 		    				  	<span @click="praiseCount">{{count1}}赞：{{item.praiseCount}}</span><span @click="commentCount">{{count2}}回复：{{item.commentCount}}</span>
 		    				  </p>
 		    				</li>
+		    				<li>
+		    					<v-comment :commentData="item.comments"></v-comment>
+		    					<router-link :to="{name: 'ChatDetail', params: {id: item.id}}">
+		    					<span class="allComments" v-if="item.commentCount > 2">查看{{item.commentCount}}条回复</span>
+		    					</router-link>
+		    				</li>
 		    			</ul>
 		    		</div>
 		    	</li>
-	    	
 			</ul>
 			<div class="loadMore" @click="loadMore">查看更多&nbsp;&gt;&gt;</div>
   </div>
@@ -37,8 +42,10 @@
 <script>
   import {fetchChatListByType} from '../../../store/api'
   import {mapGetters,mapActions} from 'vuex'
+  import vComment from './Comment.vue'
   
   export default{
+    components: {vComment},
     data(){
       return {
         chatListData: {
@@ -57,10 +64,10 @@
       fetchChatListByType(appkey, client_id, token , page , limit)
               .then((data,index) => {
                 this.chatListData = data.ramble;
-                console.log("说说："+this.chatListData.data);
+                console.log("说说："+this.chatListData.data[8].comments[0].userName);
                 //初始化点赞和评论的count
-					      this.$store.state.count1 = this.chatListData.data[index].praiseCount;
-					      this.$store.state.count2 = this.chatListData.data[index].commentCount;
+					      //this.$store.state.count1 = this.chatListData.data[index].praiseCount;
+					      //this.$store.state.count2 = this.chatListData.data[index].commentCount;
               });
       
     },
@@ -103,4 +110,5 @@
 .chatList .chat-right .last .interact span:active{background-color: rgba(0,0,0,.3);color: #fff;}
 .loadMore{height: 40px;line-height: 40px;color: #2bb7ab;font-size: 14px;}
 .loadMore:active{background-color: rgba(0,0,0,.3);color: #fff;}
+.allComments{color: #2bb7ab;}
 </style>
