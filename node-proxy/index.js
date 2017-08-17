@@ -3,7 +3,7 @@ var express = require('express');
 var request = require('superagent')
 
 var app = express();
-var HOST = '不告诉你'
+var HOST = 'http://10.12.1.44:8080/api'
 
 /**
  * CORS support.
@@ -20,7 +20,7 @@ app.all('*', function (req, res, next) {
   next();
 });
 
-app.get('/adv/homePageByBranchId', function (req, res) {
+app.get('/v5/adv/homePageByBranchId', function (req, res) {
   var sreq = request.get(HOST + req.originalUrl)
   sreq.pipe(res);
   sreq.on('end', function (error, res) {
@@ -28,7 +28,7 @@ app.get('/adv/homePageByBranchId', function (req, res) {
   });
 })
 
-app.get('/adv/homeBannerByBranchId', function (req, res) {
+app.get('/v5/adv/homeBannerByBranchId', function (req, res) {
   var sreq = request.get(HOST + req.originalUrl)
   sreq.pipe(res);
   sreq.on('end', function (error, res) {
@@ -36,7 +36,7 @@ app.get('/adv/homeBannerByBranchId', function (req, res) {
   });
 })
 
-app.get('/adv/homePageByBranchId', function (req, res) {
+app.get('/v5/adv/homePageByBranchId', function (req, res) {
   var sreq = request.get(HOST + req.originalUrl)
   sreq.pipe(res);
   sreq.on('end', function (error, res) {

@@ -31,28 +31,29 @@
 <script>
   import * as types from '../../../store/types';
   import {API_TYPE, fetchJobListByType} from '../../../store/api';
-
+  
   export default{
-
     data(){
       return {
         loading: true,
         jobListData: {
           data: []
         },
+        data_id: '1'
       }
     },
     mounted(){
-      var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", branch_id = 1;
+      var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", branch_id = this.data_id;
       fetchJobListByType(appkey, client_id, token , branch_id)
               .then((data) => {
                 this.jobListData = data;
                 this.loading = false;
                 console.log(this.jobListData.data)
               });
-
+      
     },
     updated(){
+    	
     },
     destroyed(){
     }
