@@ -20,6 +20,8 @@ export function fetch(url) {
         })
   })
 }
+
+
 //首页轮播
 export function fetchBannersByType(appkey, client_id, token , branch_id) {
   return fetch(`/v5/adv/homeBannerByBranchId?appkey=${appkey}&client_id=${client_id}&token=${token}&branch_id=${branch_id}`)
@@ -44,3 +46,4 @@ export function fetchChatListByType(appkey, client_id, token , page , limit) {
 export function fetchChatDetailByType(appkey, client_id, token , id) {
   return fetch(`/v6/article/detail?appkey=${appkey}&client_id=${client_id}&token=${token}&id=${id}`)
 }
+//添加评论

@@ -52,8 +52,8 @@
       </div>
 		</div>
 		<div class="chat-bar">
-	  	<input class="chat-input" type="text" placeholder="写评论" />
-	  	<input class="chat-btn" type="button" value="发送" />
+	  	<input class="chat-input" type="text" placeholder="写评论" v-model="commentText" />
+	  	<input class="chat-btn" type="button" value="发送" @click="sendComment(commentText)" />
 	  </div>
   </div>
 </template>
@@ -61,11 +61,15 @@
 	import vHeaderNav from '../../common/HeaderNav.vue'
 	import {fetchChatDetailByType} from '../../../store/api'
 	import {mapGetters,mapActions} from 'vuex'
-	
+	import axios from 'axios';
+	var querystring = require('querystring');
+
+  
   export default{
   	components: {vHeaderNav},
     data(){
       return {
+      	commentText:"",
       	chatDetailData: {
           data: []
        }
@@ -80,10 +84,28 @@
       fetchChatDetailByType(appkey, client_id, token , id)
               .then((data) => {
                 this.chatDetailData = data.entity;
-                console.log("说说："+this.chatDetailData.data)
               });
     },
     methods: {
+     sendComment(datas){
+       axios.post('http://10.12.1.44:8080/api/v6/article/postComments',querystring.stringify({
+       	appkey:'145FB9D1-2643-4B18-B9EA-8CD2C44FAC00',
+       	client_id:'test',
+       	token:'b876efafcff64f7580ed2175bcb6ea2e',
+       	id:this.$route.params.id,
+       	title:'',
+		    content:datas,
+		    at_uid:''
+		    })).then(response => {
+		          var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", id = this.$route.params.id ;
+				      fetchChatDetailByType(appkey, client_id, token , id)
+	              .then((data) => {
+	                this.chatDetailData = data.entity;
+	              });
+		        }).catch(function (error) {
+				　　console.log(error);
+				});
+     },
      ...mapActions([
 				'praiseCount',
 				'commentCount'
