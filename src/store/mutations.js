@@ -1,6 +1,6 @@
-export const praiseCount = state => {
-    state.count1++
+export const praiseCount = (state,n) => {
+    state.count1 += n
 }
-export const commentCount = state => {
-    state.count2++
+export const commentCount = (state,n) => {
+    state.count2 += n
 }

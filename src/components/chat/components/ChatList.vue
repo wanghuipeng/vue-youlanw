@@ -1,6 +1,6 @@
 <template>
   <div id="chatList">
-			<ul class="chatList" v-for="(item, index) in chatListData.data" >
+			<ul class="chatList" v-for="(item, key ,index) in chatListData.data" v-bind:item="item" v-bind:index="index" v-bind:key="item.id" >
 				
 		    	<li class="item">
 		    		<div class="chat-left">

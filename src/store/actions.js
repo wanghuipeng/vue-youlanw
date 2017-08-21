@@ -1,2 +1,2 @@
-export const praiseCount = ({ commit }) => commit('praiseCount')
-export const commentCount = ({ commit }) => commit('commentCount')
+export const praiseCount = ({ commit }) => commit('praiseCount',1)
+export const commentCount = ({ commit }) => commit('commentCount',1)

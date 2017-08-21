@@ -3,6 +3,7 @@
   	<div class="headerNav">
   		<a href="javascript:history.back(-1)"><span class="arrow-return"></span></a>
 			<span class="title">{{title}}</span>
+			<span class="camera">照片</span>
 		</div>
 		<div class="height-45"></div>
   </div>
@@ -33,4 +34,5 @@
     right: 0;}
   .arrow-return{width: 24px;height: 24px;display: block;position: absolute;left: 15px;top: 10px;background: url(../../../static/images/m-arrow.png);background-position: 5px -134px;background-size: 30px;}
   .title{font-size: 15px;color: #fff;}
+  .camera{position: absolute;right: 15px;color: #fff;top: 0px;font-size: 14px;}
 </style>
