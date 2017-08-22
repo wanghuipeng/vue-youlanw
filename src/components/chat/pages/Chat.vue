@@ -1,7 +1,7 @@
 <template>
   <div id="chat">
   	<div class="chat">
-  		<v-headerNav title="说说"></v-headerNav>
+  		<v-headerNav title="说说" camera="照片"></v-headerNav>
       <v-chatList></v-chatList>
 		</div>
   </div>

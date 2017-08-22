@@ -13,7 +13,10 @@
 		    		</div>
 		    		<div class="chat-right">
 		    			<ul>
-		    				<li class="first clearfix"><span class="name">{{item.createUser.name}}</span><span class="time">{{item.publishTime}}</span></li>
+		    				<li class="first clearfix">
+		    					<span class="name">{{item.createUser.name}}</span>
+		    				  <span class="time">{{item.publishTime | time}}</span>
+		    				</li>
 		    				<router-link :to="{name: 'ChatDetail', params: {id: item.id}}">
 		    				<li class="second">
 		    					<img v-if="item.thumbImage != null" :src="item.thumbImage" />
@@ -43,7 +46,7 @@
   import {fetchChatListByType} from '../../../store/api'
   import {mapGetters,mapActions} from 'vuex'
   import vComment from './Comment.vue'
-  
+
   export default{
     components: {vComment},
     data(){

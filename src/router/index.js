@@ -5,6 +5,7 @@ import JobSearch from '@/components/search/pages/JobSearch.vue'
 import Notice from '@/components/notice/pages/Notice.vue'
 import Chat from '@/components/chat/pages/Chat.vue'
 import ChatDetail from '@/components/chat/pages/ChatDetail.vue'
+import PublishChat from '@/components/chat/pages/PublishChat.vue'
 
 Vue.use(Router)
 
@@ -39,6 +40,11 @@ export default new Router({
       path: '/Chat/ChatDetail/:id',
       name: 'ChatDetail',
       component: ChatDetail
+    },
+    {
+      path: '/Chat/PublishChat',
+      name: 'PublishChat',
+      component: PublishChat
     }
   ]
 })

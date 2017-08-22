@@ -7,8 +7,12 @@ import store from './store'
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 import { Swipe, SwipeItem,Tabbar, TabItem,InfiniteScroll  } from 'mint-ui';
-
-
+import moment from '../static/js/moment.min.js';
+/*说说列表的时间戳转换*/
+Vue.filter('time', function (value, formatString) {
+    formatString = formatString || 'YYYY-MM-DD HH:mm:ss';
+    return moment(value).startOf('hour').fromNow(formatString);  
+});
 /*Mint*/
 Vue.use(Mint);
 /*InfiniteScroll*/
