@@ -18,7 +18,7 @@
 		        	<router-link to="/Notice" class="city">消息</router-link> 
 		          <router-link to="/Chat" class="user">说说</router-link> 
 		          <router-link to="/JobSearch" class="welfare">我的</router-link> 
-		          <router-link to="/JobSearch" class="record">浏览记录</router-link> 
+		          <router-link to="/Record" class="record">浏览记录</router-link> 
 		        </div>
 		    </div>
 		    <!--/导航panel-->
@@ -53,7 +53,7 @@
 	    <div class="jobList">
 				<ul class="joblist joblist-sty">
 						<div  v-for="(item, index) in jobListData.data">
-					    	<a :href="['http://m.youlanw.com/zhaopin_'+item.resource.resourceValue+'.html']">
+					    	<a :href="['http://m.youlanw.com/zhaopin_'+item.resource.resourceValue+'.html']" @click="recordId(item.resource.id)">
 					    	<li>
 					    		<ul class="joblist-each">
 						    			<div v-if="item.resource.label1 == '招聘'">
@@ -120,8 +120,8 @@ x.dpr = v, x.addEventListener("resize", function() {
 	import vRecommend from '../components/Recommend.vue'
 	import vTitleBar from '../components/TitleBar.vue'
 	import * as types from '../../../store/types';
-  import {API_TYPE, fetchBannersByType,fetchJobListByType} from '../../../store/api';
-  
+    import {API_TYPE, fetchBannersByType,fetchJobListByType} from '../../../store/api';
+
 	export default{
     components: {vClassify,vRecommend,vTitleBar},
     data(){
@@ -199,10 +199,12 @@ x.dpr = v, x.addEventListener("resize", function() {
 				jobListData: {
           data: []
         },
-        data_id: '1'
+        data_id: '1',
+        recordArr:[]
       }
     },
     mounted(){
+
     	 var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", branch_id = this.data_id;
        fetchBannersByType(appkey, client_id, token , branch_id)
               .then((data) => {
@@ -224,6 +226,16 @@ x.dpr = v, x.addEventListener("resize", function() {
     destroyed(){
     },
     methods: {
+    	recordId(id){
+            this.recordArr.push(id);
+			//存储，IE6~7 cookie 其他浏览器HTML5本地存储
+			if (window.localStorage) {
+			    localStorage.setItem("menuTitle", this.recordArr);	
+			} else {
+			    Cookie.write("menuTitle", this.recordArr);	
+			}
+    		
+    	},
     	showPanel(){
     		  this.show = true
     	},

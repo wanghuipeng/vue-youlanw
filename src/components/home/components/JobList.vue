@@ -22,9 +22,6 @@
 				    	</li>
 					</a>
 			</ul>
-			<p>
-				<a href="http://m.youlanw.com/sh_zhaopin/" class="view-more">查看更多招工信息&nbsp;&gt;&gt;</a>
-			</p>
 		</div>
   </div>
 </template>

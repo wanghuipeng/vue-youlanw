@@ -6,6 +6,7 @@ import Notice from '@/components/notice/pages/Notice.vue'
 import Chat from '@/components/chat/pages/Chat.vue'
 import ChatDetail from '@/components/chat/pages/ChatDetail.vue'
 import PublishChat from '@/components/chat/pages/PublishChat.vue'
+import Record from '@/components/record/pages/Record.vue'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
       path: '/Chat/PublishChat',
       name: 'PublishChat',
       component: PublishChat
+    },
+    {
+      path: '/Record',
+      name: 'Record',
+      component: Record
     }
   ]
 })
