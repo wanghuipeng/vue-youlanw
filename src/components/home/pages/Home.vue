@@ -17,7 +17,7 @@
 		        <div class="nav-menu">
 		        	<router-link to="/Notice" class="city">消息</router-link> 
 		          <router-link to="/Chat" class="user">说说</router-link> 
-		          <router-link to="/JobSearch" class="welfare">我的</router-link> 
+		          <router-link to="/Mine" class="welfare">我的</router-link> 
 		          <router-link to="/Record" class="record">浏览记录</router-link> 
 		        </div>
 		    </div>

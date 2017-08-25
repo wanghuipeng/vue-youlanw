@@ -7,6 +7,7 @@ import Chat from '@/components/chat/pages/Chat.vue'
 import ChatDetail from '@/components/chat/pages/ChatDetail.vue'
 import PublishChat from '@/components/chat/pages/PublishChat.vue'
 import Record from '@/components/record/pages/Record.vue'
+import Mine from '@/components/mine/pages/Mine.vue'
 
 Vue.use(Router)
 
@@ -51,6 +52,11 @@ export default new Router({
       path: '/Record',
       name: 'Record',
       component: Record
+    },
+    {
+      path: '/Mine',
+      name: 'Mine',
+      component: Mine
     }
   ]
 })
