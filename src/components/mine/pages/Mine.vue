@@ -4,7 +4,9 @@
   		<v-headerNav title="我的"></v-headerNav>
       <div class="user">
       	<img src="../../../../static/images/default-portrait.png" />
-      	<p>登录后找工作更方便</p>
+      	<router-link to="/Login">
+      		<p>登录后找工作更方便</p>
+      	</router-link>	
       </div>
       <ul class="ul-li-3 clearfix">
       	<li class="ms">面试</li>
@@ -53,17 +55,17 @@
 .user img{position: absolute;left: 15px;top: 13px;width: 55px;height: 55px;border-radius: 100%;}
 .user p{text-align: left;font-size: 16px;padding-left: 70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 60%;}
 .ul-li-3{padding: 10px 0;}
-.ul-li-3 li{float: left;display: inline-block;width: 33%;position: relative;height: 20px;padding-top: 35px;border-left: 1px solid #eee;}
+.ul-li-3 li{float: left;display: inline-block;width: 33%;position: relative;height: 20px;padding-top: 25px;border-left: 1px solid #eee;}
 .ul-li-3 li:first-child{border-left: none;}
-.ul-li-3 li:before{content: "";background: url(../../../../static/images/mine-common.png) no-repeat;width: 30px;height: 30px;background-size: 45px;
+.ul-li-3 li:before{content: "";background: url(../../../../static/images/mine-common.png) no-repeat;width: 30px;height: 20px;background-size: 30px;
     display: block;
     position: absolute;
     left: 50%;
     top: 0;
     margin-left: -15px;}
-.ul-li-3 li:first-child:before{background-position: 0px 0px;}
-.ul-li-3 li:nth-child(2):before{background-position: 0px -31px;}
-.ul-li-3 li:last-child:before{background-position: 0px -67px;}
+.ul-li-3 li:first-child:before{background-position: 6px 0px;background-size: 35px;}
+.ul-li-3 li:nth-child(2):before{background-position: 6px -20px;}
+.ul-li-3 li:last-child:before{background-position: 6px -45px;}
 .list li{text-align: left;height: 45px;line-height: 45px;border-bottom: 1px solid #eee;padding-left: 40px;padding-right: 15px;position: relative;}
 .list li:before{content: "";display: block;width: 25px;height: 25px;background: url(../../../../static/images/mine-common.png) no-repeat;background-size: 29px;position: absolute;left: 10px;top: 10px;}
 .list li.jb:before{background-position: 3px -64px;}

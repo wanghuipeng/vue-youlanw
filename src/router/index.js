@@ -8,6 +8,7 @@ import ChatDetail from '@/components/chat/pages/ChatDetail.vue'
 import PublishChat from '@/components/chat/pages/PublishChat.vue'
 import Record from '@/components/record/pages/Record.vue'
 import Mine from '@/components/mine/pages/Mine.vue'
+import Login from '@/components/login/pages/Login.vue'
 
 Vue.use(Router)
 
@@ -57,6 +58,11 @@ export default new Router({
       path: '/Mine',
       name: 'Mine',
       component: Mine
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: Login
     }
   ]
 })
