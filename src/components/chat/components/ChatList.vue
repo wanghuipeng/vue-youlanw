@@ -26,7 +26,7 @@
 		    				<li class="last clearfix">
 		    					<span class="loop">{{item.circle.name}}</span>
 		    				  <p class="interact">
-		    				  	<span @click="praiseCount">{{count1}}赞：{{item.praiseCount}}</span><span @click="commentCount">{{count2}}回复：{{item.commentCount}}</span>
+		    				  	<span @click="praiseCount1(item)">{{count1}}赞：{{item.praiseCount}}</span><span @click="commentCount1(item)">{{count2}}回复：{{item.commentCount}}</span>
 		    				  </p>
 		    				</li>
 		    				<li>
@@ -80,6 +80,12 @@
     destroyed(){
     },
     methods: {
+    	praiseCount1(item){
+    		item.praiseCount++;
+    	},
+    	commentCount1(item){
+    		item.commentCount++;
+    	},
       loadMore() {
       	this.limit += 10
 			  var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", page = 1 , limit = this.limit;

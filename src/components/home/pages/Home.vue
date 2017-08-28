@@ -1,87 +1,89 @@
 <template>
-	<div id="home">
-	  <div class="home">
-	  	<div class="header">
-				<a href="http://m.youlanw.com/"><img src="http://m.youlanw.com/static/images/logo.png" alt="优蓝网" class="logo"></a>
-				<div class="linkage-select">
-					<div class="form-g-each-r overflow-hide change" >
-						<a href="javascript:void(0)" @click="showCity">{{cityName}}<i class="arrow-d"></i></a>
-					</div>
-				</div>
-				<router-link to="/JobSearch">
-				<a href="javascript:void(0)" class="icon-search">搜索</a>
-				</router-link>
-				<a href="javascript:void(0)" class="icon-menu" @click="showPanel">导航</a>
-				<!--导航panel-->
-		    <div class="nav-panel bg-white" :class="{on:show == true}">
-		        <div class="nav-menu">
-		        	<router-link to="/Notice" class="city">消息</router-link> 
-		          <router-link to="/Chat" class="user">说说</router-link> 
-		          <router-link to="/Mine" class="welfare">我的</router-link> 
-		          <router-link to="/Record" class="record">浏览记录</router-link> 
-		        </div>
-		    </div>
-		    <!--/导航panel-->
-			</div>
-			<!--城市-->
-			<div class="linkage-select-panel" :class="{on:active == true}">
-				<div class="first-step">
-					    <div class="box-g-w-2 cities">
-					        <a href="javascript:void(0)" v-for="(city,index) in cities" v-model="cityName" @click="cityClick(city.id,city.name)">{{city.name}}</a>
-					    </div>
-					    <div class="clear"></div>
-					    <!--当前定位-->
-					    <div class="title-g-2">当前定位：<a href="" class="blue">{{cityName}}</a><a href="http://m.youlanw.com/changeCity.html" class="right blue">全部招聘城市&nbsp;&gt;&gt;</a></div>
-					    <!--/当前定位-->
-			    </div>
-			</div>
-			<!--模态层-->
-			<div class="mask-layer-2" :class="{show:active == true}" @click="hideCity"></div>
-			
-	  	<div id="banner">
-				<div class="page-swipe" >
-		      <mt-swipe :auto="4000"   >
-					  <mt-swipe-item v-for="(item, index) in bannerData.data"><img class="img-show" :src="item.resource.thumbImageUrl" :alt="item.resource.subtitle"/></mt-swipe-item>
-					</mt-swipe>
-				</div>
-		  </div>
-	
-	    <v-classify></v-classify>
-	    <v-recommend></v-recommend>
-	    <v-title-bar></v-title-bar>
-	    
-	    <div class="jobList">
-				<ul class="joblist joblist-sty">
-						<div  v-for="(item, index) in jobListData.data">
-					    	<a :href="['http://m.youlanw.com/zhaopin_'+item.resource.resourceValue+'.html']" @click="recordId(item.resource.id)">
-					    	<li>
-					    		<ul class="joblist-each">
-						    			<div v-if="item.resource.label1 == '招聘'">
-											  <li class="hot-icon"></li>
-											</div>
-						    			<li class="title"><span class="jobName">{{item.resource.description}}</span> , {{item.resource.title}}</li> 
-										<li class="welfare-spans">
-											<span>包住</span>|<span>餐补</span>|<span>无需经验</span></li>
-										<li class="salary">
-											<span>{{item.resource.subtitle}}</span>
-										</li>
-										<li class="comp-pic">
-										<img :src="item.resource.thumbImageUrl" :alt="item.resource.imgAlt" class="pic">
-											</li>
-										<li class="location">{{item.resource.label2}}</li>
-									</ul>
-					    	</li>
-					    	</a>
+
+			<div id="home">
+			  <div class="home">
+			  	<div class="header">
+						<a href="http://m.youlanw.com/"><img src="http://m.youlanw.com/static/images/logo.png" alt="优蓝网" class="logo"></a>
+						<div class="linkage-select">
+							<div class="form-g-each-r overflow-hide change" >
+								<a href="javascript:void(0)" @click="showCity">{{cityName}}<i class="arrow-d"></i></a>
+							</div>
 						</div>
-				</ul>
-				<p>
-					<a href="http://m.youlanw.com/sh_zhaopin/" class="view-more">查看更多招工信息&nbsp;&gt;&gt;</a>
-				</p>
+						<router-link to="/JobSearch">
+						<a href="javascript:void(0)" class="icon-search">搜索</a>
+						</router-link>
+						<a href="javascript:void(0)" class="icon-menu" @click="showPanel">导航</a>
+						<!--导航panel-->
+				    <div class="nav-panel bg-white" :class="{on:show == true}">
+				        <div class="nav-menu">
+				        	<router-link to="/Notice" class="city">消息</router-link> 
+				          <router-link to="/Chat" class="user">说说</router-link> 
+				          <router-link to="/Mine" class="welfare">我的</router-link> 
+				          <router-link to="/Record" class="record">浏览记录</router-link> 
+				        </div>
+				    </div>
+				    <!--/导航panel-->
+					</div>
+					<!--城市-->
+					<div class="linkage-select-panel" :class="{on:active == true}">
+						<div class="first-step">
+							    <div class="box-g-w-2 cities">
+							        <a href="javascript:void(0)" v-for="(city,index) in cities" v-model="cityName" @click="cityClick(city.id,city.name)">{{city.name}}</a>
+							    </div>
+							    <div class="clear"></div>
+							    <!--当前定位-->
+							    <div class="title-g-2">当前定位：<a href="" class="blue">{{cityName}}</a><a href="http://m.youlanw.com/changeCity.html" class="right blue">全部招聘城市&nbsp;&gt;&gt;</a></div>
+							    <!--/当前定位-->
+					    </div>
+					</div>
+					<!--模态层-->
+					<div class="mask-layer-2" :class="{show:active == true}" @click="hideCity"></div>
+					
+			  	<div id="banner">
+						<div class="page-swipe" >
+				      <mt-swipe :auto="4000"   >
+							  <mt-swipe-item v-for="(item, index) in bannerData.data"><img class="img-show" :src="item.resource.thumbImageUrl" :alt="item.resource.subtitle"/></mt-swipe-item>
+							</mt-swipe>
+						</div>
+				  </div>
+			
+			    <v-classify></v-classify>
+			    <v-recommend></v-recommend>
+			    <v-title-bar></v-title-bar>
+			    
+			    <div class="jobList">
+						<ul class="joblist joblist-sty">
+								<div  v-for="(item, index) in jobListData.data">
+							    	<a :href="['http://m.youlanw.com/zhaopin_'+item.resource.resourceValue+'.html']" @click="recordId(item.resource.id)">
+							    	<li>
+							    		<ul class="joblist-each">
+								    			<div v-if="item.resource.label1 == '招聘'">
+													  <li class="hot-icon"></li>
+													</div>
+								    			<li class="title"><span class="jobName">{{item.resource.description}}</span> , {{item.resource.title}}</li> 
+												<li class="welfare-spans">
+													<span>包住</span>|<span>餐补</span>|<span>无需经验</span></li>
+												<li class="salary">
+													<span>{{item.resource.subtitle}}</span>
+												</li>
+												<li class="comp-pic">
+												<img :src="item.resource.thumbImageUrl" :alt="item.resource.imgAlt" class="pic">
+													</li>
+												<li class="location">{{item.resource.label2}}</li>
+											</ul>
+							    	</li>
+							    	</a>
+								</div>
+						</ul>
+						<p>
+							<a href="http://m.youlanw.com/sh_zhaopin/" class="view-more">查看更多招工信息&nbsp;&gt;&gt;</a>
+						</p>
+					</div>
+			
+			  </div>
+			  <div class="mask-layer" :class="{show:show == true}" @click="hidePanel"></div>
 			</div>
-	
-	  </div>
-	  <div class="mask-layer" :class="{show:show == true}" @click="hidePanel"></div>
-	</div>
+
 </template>
 
 <script>
@@ -203,8 +205,8 @@ x.dpr = v, x.addEventListener("resize", function() {
         recordArr:[]
       }
     },
+  
     mounted(){
-
     	 var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", branch_id = this.data_id;
        fetchBannersByType(appkey, client_id, token , branch_id)
               .then((data) => {
@@ -220,6 +222,8 @@ x.dpr = v, x.addEventListener("resize", function() {
                 this.loading = false;
                 console.log(this.jobListData.data)
               });
+        
+              
     },
     updated(){
     },
