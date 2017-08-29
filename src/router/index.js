@@ -40,7 +40,10 @@ export default new Router({
     {
       path: '/Chat',
       name: 'Chat',
-      component: Chat
+      component: Chat,
+      meta:{
+      	keepAlive: true
+      }
     },
     {
       path: '/Chat/ChatDetail/:id',

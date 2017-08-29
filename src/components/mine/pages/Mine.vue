@@ -1,7 +1,11 @@
 <template>
   <div id="mine">
   	<div class="mine">
-  		<v-headerNav title="我的"></v-headerNav>
+  		<div class="headerNav">
+	  		<router-link to="/"><span class="arrow-return"></span></router-link>
+				<span class="title">我的</span>
+			</div>
+			<div class="height-45"></div>
       <div class="user">
       	<img src="../../../../static/images/default-portrait.png" />
       	<router-link to="/Login">
@@ -75,4 +79,10 @@
 .list li.yq:before{background-position: 3px -160px;}
 .list li.gy:before{background-position: 3px -184px;}
 .list li.lx:before{background-position: 0px -293px;background-size: 40px;}
+.height-45{height: 45px;width: 100%;}
+a{-webkit-tap-highlight-color: rgba(0,0,0,.3);}
+.headerNav{height: 45px;line-height: 45px;text-align: center;background-color:#2bb7ab;position: fixed;width: 100%;z-index: 100;left: 0;right: 0;}
+.arrow-return{width: 24px;height: 24px;display: block;position: absolute;left: 15px;top: 10px;background: url(../../../../static/images/m-arrow.png);background-position: 5px -134px;background-size: 30px;}
+.title{font-size: 15px;color: #fff;}
+.camera,.publish{position: absolute;right: 15px;color: #fff;top: 0px;font-size: 14px;}
 </style>

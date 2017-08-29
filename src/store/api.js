@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // 使用代理
-const HOST =process.env.NODE_ENV === 'production' ? '不告诉你' : 'http://10.12.1.44:8080/api';
+const HOST =process.env.NODE_ENV === 'production' ? '不告诉你' : 'http://10.0.11.44:8080/api';
 
 export const API_TYPE = {
   movie: {
