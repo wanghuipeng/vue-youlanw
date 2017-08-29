@@ -34,10 +34,10 @@ export default {
 
       //发送http请求获取，这里写死作演示
       this.userInfo = {
-        nick: 'Doterlin',
+        nick: 'wanghuipeng',
         ulevel: 20,
         uid: '10000',
-        portrait: 'images/profile.png'
+        portrait: '../static/images/ok.png'
       }
 
       //实例开发中这里会向服务端请求数据
@@ -68,6 +68,6 @@ body{background: #fff;}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: #f0f0f0;
+  background: #fff;
 }
 </style>

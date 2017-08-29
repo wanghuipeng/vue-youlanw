@@ -7,9 +7,10 @@
 			</div>
 			<div class="height-45"></div>
       <div class="user">
-      	<img src="../../../../static/images/default-portrait.png" />
+      	<!--<img src="../../../../static/images/default-portrait.png" />-->
+      	<img :src=userImg />
       	<router-link to="/Login">
-      		<p>登录后找工作更方便</p>
+      		<p>{{userName}}</p>
       	</router-link>	
       </div>
       <ul class="ul-li-3 clearfix">
@@ -33,6 +34,10 @@
       	<li class="gy">关于优蓝</li>
       	<li class="lx">联系客服</li>
       </ul>
+      
+      <div class="logout">
+	    	<p class="btn-g btn-blue" @click="logout" v-if="!isLogouting">退出</p>
+	    </div>
 		</div>
   </div>
 </template>
@@ -43,13 +48,48 @@
   	components: {vHeaderNav},
     data(){
       return {
+      	isLogouting: false,
+      	userImg:null,
+      	userName:null
       }
     },
     mounted(){
-      
+        this.userImg = this.$store.state.login.userInfo.portrait
+        this.userName = this.$store.state.login.userInfo.nick
     },
+    computed: {
+  	levelClass(){
+  		var level = this.level;
+  		if (1 <= level && level <= 7) {
+        	return 1;
+      	} else if (8 <= level && level <= 16) {
+        	return 2;
+      	} else if (16 <= level && level <= 31) {
+        	return 3;
+      	} else if (32 <= level && level <= 63) {
+        	return 4;
+      	} else if (64 <= level && level <= 127) {
+          	return 5;
+      	} else if (128 <= level && level <= 254) {
+        	return 6;
+      	} else {
+        	return 6;
+      	}
+  	}
+  },
     methods: {
-     
+     //注销
+	    logout(){
+	      //删除cookie并跳到登录页
+	      this.isLogouting = true;
+	      this.delCookie('session');
+	      
+	       //演示
+	      setTimeout(()=>{
+	        this.$router.push('/login/');
+	        this.isLogouting = false;
+	      },1000)
+	    }
     }
   };
 </script>
@@ -57,7 +97,7 @@
 .mine{background-color: #fff;}
 .user{padding: 15px;height: 50px;position: relative;line-height: 50px;border-bottom: 1px solid #eee;}
 .user img{position: absolute;left: 15px;top: 13px;width: 55px;height: 55px;border-radius: 100%;}
-.user p{text-align: left;font-size: 16px;padding-left: 70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 60%;}
+.user p{text-align: left;font-size: 16px;padding-left: 70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 80%;}
 .ul-li-3{padding: 10px 0;}
 .ul-li-3 li{float: left;display: inline-block;width: 33%;position: relative;height: 20px;padding-top: 25px;border-left: 1px solid #eee;}
 .ul-li-3 li:first-child{border-left: none;}
@@ -85,4 +125,5 @@ a{-webkit-tap-highlight-color: rgba(0,0,0,.3);}
 .arrow-return{width: 24px;height: 24px;display: block;position: absolute;left: 15px;top: 10px;background: url(../../../../static/images/m-arrow.png);background-position: 5px -134px;background-size: 30px;}
 .title{font-size: 15px;color: #fff;}
 .camera,.publish{position: absolute;right: 15px;color: #fff;top: 0px;font-size: 14px;}
+.logout{padding: 15px;}
 </style>

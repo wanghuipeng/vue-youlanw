@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from './store'
+import store from './store/store.js'
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 import { Swipe, SwipeItem,Tabbar, TabItem,InfiniteScroll  } from 'mint-ui';
@@ -27,7 +27,6 @@ Vue.component(TabItem.name, TabItem);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-
 
 Vue.prototype.setCookie = (c_name, value, expiredays) => {
   var exdate = new Date();　　　　
@@ -59,7 +58,9 @@ new Vue({
   router,
   template: '<App/>',
 	components: { App },
-	
+	watch:{
+    "$route" : 'checkLogin'
+  },
   created() {
     this.checkLogin();
   },
@@ -70,7 +71,7 @@ new Vue({
       if(!this.getCookie('session')){
         this.$router.push('/Login');
       }else{
-        this.$router.push('/');
+        return true;
       }
     }
   }

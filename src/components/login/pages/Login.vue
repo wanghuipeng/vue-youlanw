@@ -112,4 +112,5 @@ background-color: #fff;
 font-size: 10px;
 }
 .login-form .btn-login{width: 100%;display: block;height: 45px;line-height: 45px;color: #333;border: 1px solid #ccc;margin-top: 30px;border-radius: 5px;background-color: #fff;font-size: 16px;}
+.login-form .btn-login:active{background-color: #f5f5f5;}
 </style>
