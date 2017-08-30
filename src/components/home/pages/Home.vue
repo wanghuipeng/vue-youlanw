@@ -123,7 +123,7 @@ x.dpr = v, x.addEventListener("resize", function() {
 	import vTitleBar from '../components/TitleBar.vue'
 	import * as types from '../../../store/types';
     import {API_TYPE, fetchBannersByType,fetchJobListByType} from '../../../store/api';
-
+    
 	export default{
     components: {vClassify,vRecommend,vTitleBar},
     data(){
@@ -205,7 +205,6 @@ x.dpr = v, x.addEventListener("resize", function() {
         recordArr:[]
       }
     },
-  
     mounted(){
     	 var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", branch_id = this.data_id;
        fetchBannersByType(appkey, client_id, token , branch_id)
@@ -231,14 +230,13 @@ x.dpr = v, x.addEventListener("resize", function() {
     },
     methods: {
     	recordId(id){
-            this.recordArr.push(id);
+    		this.recordArr.push(id);
 			//存储，IE6~7 cookie 其他浏览器HTML5本地存储
 			if (window.localStorage) {
-			    localStorage.setItem("menuTitle", this.recordArr);	
+			    localStorage.setItem("menuTitle"+id, this.recordArr);	
 			} else {
-			    Cookie.write("menuTitle", this.recordArr);	
+			    Cookie.write("menuTitle"+id, this.recordArr);
 			}
-    		
     	},
     	showPanel(){
     		  this.show = true
@@ -272,6 +270,7 @@ x.dpr = v, x.addEventListener("resize", function() {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.home{background-color: #f5f5f5;}
 h1, h2 {
   font-weight: normal;
 }

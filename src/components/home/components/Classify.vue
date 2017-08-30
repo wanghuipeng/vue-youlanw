@@ -38,7 +38,8 @@
   };
 </script>
 <style scoped>
-	.classify .mint-tabbar{position: relative;}
+.classify{background-color: #fff;}
+	.classify .mint-tabbar{position: relative;background-color: #fff;}
 	.mint-tab-item-label .circle{width: 50px;
 height: 50px;
 border-radius: 50%;

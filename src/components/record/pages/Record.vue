@@ -2,11 +2,10 @@
   <div id="record">
   	<div class="record">
   		<v-headerNav title="浏览记录"></v-headerNav>
-        <v-jobList></v-jobList>
-        <div>事实上{{arr}}</div>
+        <div>浏览记录列表id:{{arr}}</div>
         
         <div class="clearAll">
-        	<p class="btn-g btn-blue">清除全部</p>
+        	<p class="btn-g btn-blue" @click="clearLocalStorage">清除全部</p>
         </div>
     </div>
   </div>
@@ -14,7 +13,6 @@
 <script>
 	import vHeaderNav from '../../common/HeaderNav.vue'
 	import vJobList from '../../home/components/JobList.vue'
-
 	
   export default{
   	components: {vHeaderNav,vJobList},
@@ -24,14 +22,24 @@
       }
     },
     mounted(){
-    	var strStoreDate = window.localStorage? localStorage.getItem("menuTitle"): Cookie.read("menuTitle");
-
-        this.arr.push(strStoreDate);
-
+    	this.initArr()
     },
-    methods: {
-     
+    methods:{
+    	initArr(){
+    		 var storageArr = window.localStorage;  
+				 for (var i=0, len = storageArr.length; i  <  len; i++){     
+				  var key = storageArr.key(i);       
+				  var value = storageArr.getItem(key);     
+				  this.arr.push(value);  
+				 }  
+    	},
+    	clearLocalStorage(){
+    		var storageArr = window.localStorage;  
+    		 storageArr.clear();
+    		 this.arr.splice(0,this.arr.length);
+    	}
     }
+     
   };
 </script>
 <style scoped>	
