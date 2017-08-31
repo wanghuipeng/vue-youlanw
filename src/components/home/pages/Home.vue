@@ -51,7 +51,7 @@
 			    <v-recommend></v-recommend>
 			    <v-title-bar></v-title-bar>
 			    
-			    <div class="jobList">
+			    <div class="jobList"> 
 						<v-loading v-if="isLoging" marginTop="0" style="top:35px"></v-loading>
 						<ul class="joblist joblist-sty">
 								<div  v-for="(item, index) in jobListData.data">
