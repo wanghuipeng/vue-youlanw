@@ -18,6 +18,7 @@ export default new Router({
 	  path: '/',
 	  name: 'Home',
 	  component: Home,
+	  title: '首页',
 	  meta: {
       keepAlive: true // 需要被缓存
     }
@@ -25,21 +26,25 @@ export default new Router({
     {
       path: '/Home',
       name: 'Home',
+      title: '首页',
       component: Home
     },
     {
       path: '/JobSearch',
       name: 'JobSearch',
+      title: '职位搜索',
       component: JobSearch
     },
     {
       path: '/Notice',
       name: 'Notice',
+      title: '消息',
       component: Notice
     },
     {
       path: '/Chat',
       name: 'Chat',
+      title: '说说',
       component: Chat,
       meta:{
       	keepAlive: true
@@ -48,21 +53,28 @@ export default new Router({
     {
       path: '/Chat/ChatDetail/:id',
       name: 'ChatDetail',
-      component: ChatDetail
+      title: '话题详情',
+      component: ChatDetail,
+      meta:{
+      	keepAlive: true
+      }
     },
     {
       path: '/Chat/PublishChat',
       name: 'PublishChat',
+      title: '发布话题',
       component: PublishChat
     },
     {
       path: '/Record',
       name: 'Record',
+      title: '浏览记录',
       component: Record
     },
     {
       path: '/Mine',
       name: 'Mine',
+      title: '我的',
       component: Mine,
       meta:{
       	keepAlive: true
@@ -71,6 +83,7 @@ export default new Router({
     {
       path: '/Login',
       name: 'Login',
+      title: '登录',
       component: Login
     }
   ]
