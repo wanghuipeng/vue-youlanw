@@ -34,8 +34,10 @@
 				 }  
     	},
     	clearLocalStorage(){
-    		var storageArr = window.localStorage;  
+    		var storageArr = window.localStorage; 
+    		//清空storage
     		 storageArr.clear();
+    		 //清空数组
     		 this.arr.splice(0,this.arr.length);
     	}
     }
