@@ -39,6 +39,9 @@
 		    		</div>
 		    	</li>
 			</ul>
+			<section v-if="showLoading" v-for="n in 10">
+       <img src="../../../../static/images/svg_bg.svg">
+      </section>
 			<div class="loadMore" @click="loadMore">查看更多&nbsp;&gt;&gt;</div>
   </div>
 </template>
@@ -55,7 +58,8 @@
           data: []
         },
         loading:true,
-        limit:10
+        limit:10,
+        showLoading:true
       }
     },
     computed: mapGetters([
@@ -63,16 +67,17 @@
     	'count2'
     ]),
     mounted(){
-      var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", page = 1 , limit = this.limit;
-      fetchChatListByType(appkey, client_id, token , page , limit)
+       var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", page = 1 , limit = this.limit;
+        fetchChatListByType(appkey, client_id, token , page , limit)
               .then((data,index) => {
                 this.chatListData = data.ramble;
                 console.log("说说："+this.chatListData.data[8].comments[0].userName);
+                //隐藏展位图
+                this.showLoading = false;
                 //初始化点赞和评论的count
 					      //this.$store.state.count1 = this.chatListData.data[index].praiseCount;
 					      //this.$store.state.count2 = this.chatListData.data[index].commentCount;
               });
-      
     },
     updated(){
     	
