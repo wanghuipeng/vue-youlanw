@@ -52,6 +52,7 @@
 			    <v-title-bar></v-title-bar>
 			    
 			    <div class="jobList">
+						<v-loading v-if="isLoging" marginTop="0" style="top:35px"></v-loading>
 						<ul class="joblist joblist-sty">
 								<div  v-for="(item, index) in jobListData.data">
 							    	<a :href="['http://m.youlanw.com/zhaopin_'+item.resource.resourceValue+'.html']" @click="recordId(item.resource.id)">
@@ -75,7 +76,7 @@
 							    	</a>
 								</div>
 						</ul>
-						<p>
+						<p v-if="!isLoging">
 							<a href="http://m.youlanw.com/sh_zhaopin/" class="view-more">查看更多招工信息&nbsp;&gt;&gt;</a>
 						</p>
 					</div>
@@ -123,9 +124,10 @@ x.dpr = v, x.addEventListener("resize", function() {
 	import vTitleBar from '../components/TitleBar.vue'
 	import * as types from '../../../store/types';
     import {API_TYPE, fetchBannersByType,fetchJobListByType} from '../../../store/api';
+    import vLoading from '../../common/Loading.vue'
     
 	export default{
-    components: {vClassify,vRecommend,vTitleBar},
+    components: {vClassify,vRecommend,vTitleBar,vLoading},
     data(){
       return {
         parentMsg:"hello",
@@ -202,7 +204,8 @@ x.dpr = v, x.addEventListener("resize", function() {
           data: []
         },
         data_id: '1',
-        recordArr:[]
+        recordArr:[],
+        isLoging: true
       }
     },
     mounted(){
@@ -210,15 +213,15 @@ x.dpr = v, x.addEventListener("resize", function() {
        fetchBannersByType(appkey, client_id, token , branch_id)
               .then((data) => {
                 this.bannerData = data;
-                this.loading = false;
                 console.log(this.bannerData.data)
               });
               
-       var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", branch_id = this.data_id;
+
       fetchJobListByType(appkey, client_id, token , branch_id)
               .then((data) => {
                 this.jobListData = data;
-                this.loading = false;
+                //菊花
+		        this.isLoging = false;
                 console.log(this.jobListData.data)
               });
         
@@ -316,6 +319,7 @@ li {
   }
   .title-g-2{text-align: left;}
   .jobName{text-overflow:ellipsis;overflow: hidden;white-space: nowrap;width: 4.8rem;float: left;display: inline-block;vertical-align: middle;}
+	.jobList,.joblist,.joblist>div,.joblist>div>a,.joblist>div>a>li{background-color: #fff;}
 	.joblist-sty .joblist-each .title{text-align: left;}
   .joblist-sty .joblist-each .salary,.joblist-sty .joblist-each .welfare-spans{text-align: left;}
   .joblist-sty li{margin: 0;}
