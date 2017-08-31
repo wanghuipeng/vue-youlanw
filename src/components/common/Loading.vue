@@ -70,7 +70,7 @@ export default {
 }
 .loadEffect .ld-span:nth-child(4){
     top: 14px;
-    right:14px;
+    right:14px; 
     -webkit-animation-delay:0.52s;
 }
 .loadEffect .ld-span:nth-child(5){
