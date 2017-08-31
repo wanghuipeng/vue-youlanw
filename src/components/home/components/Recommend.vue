@@ -40,6 +40,7 @@
   };
 </script>
 <style scoped>
+.recommend{background-color: #fff;}
   .recommend ul li{box-sizing: border-box;}
   .recommend ul li:nth-child(odd){border-left: none;
     margin-right: -1px;
