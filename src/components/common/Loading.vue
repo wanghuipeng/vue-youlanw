@@ -37,7 +37,7 @@ export default {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #67e7d5;
+    background: #2bb7ab;
     position: absolute;
     -webkit-animation: load 1.04s ease infinite;
 }
