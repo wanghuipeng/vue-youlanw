@@ -41,7 +41,7 @@
 							<template v-else>
 							  <img  src="http://m.youlanw.com:80/static/images/default-portrait.png" />
 							</template>
-      				<p class="time">{{item.publishTime}}</p>
+      				<p class="time">{{item.publishTime | time}}</p>
       			</li>
       			<li class="comment-r">
       				<p class="name">{{item.userName}}</p>

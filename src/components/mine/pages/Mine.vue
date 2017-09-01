@@ -34,7 +34,7 @@
       	<li class="gy">关于优蓝</li>
       	<li class="lx">联系客服</li>
       </ul>
-      
+      <div class="divider"></div>
       <div class="logout">
 	    	<p class="btn-g btn-blue" @click="logout" v-if="!isLogouting">退出</p>
 	    </div>
@@ -56,6 +56,8 @@
     mounted(){
         this.userImg = this.$store.state.login.userInfo.portrait
         this.userName = this.$store.state.login.userInfo.nick
+       // this.userImg = window.localStorage?localStorage.getItem("img"):Cookie.read("img");	
+       // this.userName = window.localStorage?localStorage.getItem("name"):Cookie.read("name");	
     },
     computed: {
   	levelClass(){
@@ -111,6 +113,7 @@
 .ul-li-3 li:nth-child(2):before{background-position: 6px -20px;}
 .ul-li-3 li:last-child:before{background-position: 6px -45px;}
 .list li{text-align: left;height: 45px;line-height: 45px;border-bottom: 1px solid #eee;padding-left: 40px;padding-right: 15px;position: relative;}
+.list li:last-child{border-bottom: none;}
 .list li:before{content: "";display: block;width: 25px;height: 25px;background: url(../../../../static/images/mine-common.png) no-repeat;background-size: 29px;position: absolute;left: 10px;top: 10px;}
 .list li.jb:before{background-position: 3px -64px;}
 .list li.yz:before{background-position: 3px -89px;}

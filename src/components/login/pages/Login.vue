@@ -76,6 +76,14 @@
 		  	   
 		      //演示用
 		  		setTimeout(()=>{
+		  			//存储，IE6~7 cookie 其他浏览器HTML5本地存储
+						if (window.localStorage) {
+						    localStorage.setItem("img", this.userImg);
+						    localStorage.setItem("name", this.userName);
+						} else {
+						    Cookie.write("img", this.userImg);
+						    Cookie.write("name", this.userName);
+						}
 		        //登录状态15天后过期
 		        let expireDays = 1000 * 60 * 60 * 24 * 15;
 		  			this.setCookie('session','blablablablabla...', expireDays);
