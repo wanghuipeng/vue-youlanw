@@ -8,10 +8,10 @@
 			<div class="height-45"></div>
       <div class="user">
       	<!--<img src="../../../../static/images/default-portrait.png" />-->
-      	<img :src=userImg />
+      	<img :src=this.$store.state.login.userInfo.portrait />
       	<router-link to="/Login">
-      		<p>{{userName}}</p>
-      	</router-link>	
+      		<p>{{this.$store.state.login.userInfo.nick}}</p>
+      	</router-link>
       </div>
       <ul class="ul-li-3 clearfix">
       	<li class="ms">面试</li>
@@ -48,16 +48,11 @@
   	components: {vHeaderNav},
     data(){
       return {
-      	isLogouting: false,
-      	userImg:null,
-      	userName:null
+      	isLogouting: false
       }
     },
     mounted(){
-        this.userImg = this.$store.state.login.userInfo.portrait
-        this.userName = this.$store.state.login.userInfo.nick
-       // this.userImg = window.localStorage?localStorage.getItem("img"):Cookie.read("img");	
-       // this.userName = window.localStorage?localStorage.getItem("name"):Cookie.read("name");	
+
     },
     computed: {
   	levelClass(){
