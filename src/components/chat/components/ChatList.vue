@@ -26,7 +26,7 @@
 		    				<li class="last clearfix">
 		    					<span class="loop">{{item.circle.name}}</span>
 		    				  <p class="interact">
-		    				  	<span @click="praiseCount1(item)">{{count1}}赞：{{item.praiseCount}}</span><span>{{count2}}回复：{{item.commentCount}}</span>
+		    				  	<span @click="praiseCount">{{$store.state.count1}}赞：{{item.praiseCount}}</span><span>回复：{{item.commentCount}}</span>
 		    				  </p>
 		    				</li>
 		    				<li>
@@ -75,8 +75,8 @@
                 //隐藏展位图
                 this.showLoading = false;
                 //初始化点赞和评论的count
-					      //this.$store.state.count1 = this.chatListData.data[index].praiseCount;
-					      //this.$store.state.count2 = this.chatListData.data[index].commentCount;
+					      this.$store.state.count1 = 1;
+					      this.$store.state.count2 = 1;
               });
     },
     updated(){

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from './store/store.js'
+import store from './store'
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 import { Swipe, SwipeItem,Tabbar, TabItem,InfiniteScroll  } from 'mint-ui';
