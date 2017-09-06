@@ -26,7 +26,7 @@
 		    				<li class="last clearfix">
 		    					<span class="loop">{{item.circle.name}}</span>
 		    				  <p class="interact">
-		    				  	<span @click="praiseCount">{{$store.state.count1}}赞：{{item.praiseCount}}</span><span>回复：{{item.commentCount}}</span>
+		    				  	<span @click="praiseCount1(item)">赞：{{item.praiseCount}}</span><span>回复：{{item.commentCount}}</span>
 		    				  </p>
 		    				</li>
 		    				<li>
