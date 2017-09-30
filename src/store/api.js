@@ -2,19 +2,12 @@
 import axios from 'axios';
 
 // 使用代理
-const HOST =process.env.NODE_ENV === 'production' ? '不告诉你' : 'http://10.0.11.44:8080';
-
-export const API_TYPE = {
-  movie: {
-    in_theaters: 'in_theaters',
-    coming_soon: 'coming_soon',
-  }
-};
+const HOST =process.env.NODE_ENV === 'production' ? 'http://10.0.11.44:8080' : 'http://10.0.11.44:8080';
 
 export function fetch(url) {
 
   return new Promise((resolve, reject)=> {
-    axios.get(HOST + url)
+    axios.get(url)
         .then(response => {
           resolve(response.data);
         })
@@ -46,4 +39,3 @@ export function fetchChatListByType(appkey, client_id, token , page , limit) {
 export function fetchChatDetailByType(appkey, client_id, token , id) {
   return fetch(`/api/v6/article/detail?appkey=${appkey}&client_id=${client_id}&token=${token}&id=${id}`)
 }
-//添加评论

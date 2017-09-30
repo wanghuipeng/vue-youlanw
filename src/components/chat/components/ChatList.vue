@@ -49,7 +49,9 @@
   import {fetchChatListByType} from '../../../store/api'
   import {mapGetters,mapActions} from 'vuex'
   import vComment from './Comment.vue'
-
+  import axios from 'axios';
+	var querystring = require('querystring');
+  
   export default{
     components: {vComment},
     data(){
@@ -71,7 +73,6 @@
         fetchChatListByType(appkey, client_id, token , page , limit)
               .then((data,index) => {
                 this.chatListData = data.ramble;
-                console.log("说说："+this.chatListData.data[8].comments[0].userName);
                 //隐藏展位图
                 this.showLoading = false;
                 //初始化点赞和评论的count
@@ -87,9 +88,19 @@
     methods: {
     	praiseCount1(item){
     		item.praiseCount++;
+    		axios.post('/api/v1/article/praise',querystring.stringify({
+       	appkey:'145FB9D1-2643-4B18-B9EA-8CD2C44FAC00',
+       	client_id:'test',
+       	token:'b876efafcff64f7580ed2175bcb6ea2e',
+       	artice_id:'59cb4fa52e1183596750853f'
+		    })).then(response => {
+				      console.log(response);
+		        }).catch(function (error) {
+				　　console.log(error);
+				});
     	},
       loadMore() {
-      	this.limit += 10
+      	this.limit += 10;
 			  var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", page = 1 , limit = this.limit;
         fetchChatListByType(appkey, client_id, token , page , limit)
               .then((data) => {

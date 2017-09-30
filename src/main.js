@@ -2,12 +2,15 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import VueValidator from 'vue-validator'
+Vue.use(VueValidator)
 import router from './router'
 import store from './store'
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 import { Swipe, SwipeItem,Tabbar, TabItem,InfiniteScroll  } from 'mint-ui';
 import moment from '../static/js/moment.min.js';
+
 /*说说列表的时间戳转换*/
 Vue.filter('time', function (value, formatString) {
     formatString = formatString || 'YYYY-MM-DD HH:mm:ss';
@@ -23,6 +26,10 @@ Vue.component(SwipeItem.name, SwipeItem);
 /*Classify.vue*/
 Vue.component(Tabbar.name, Tabbar);
 Vue.component(TabItem.name, TabItem);
+/*表单验证*/
+
+
+
 /**/
 Vue.config.productionTip = false
 

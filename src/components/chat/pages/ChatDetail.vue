@@ -25,7 +25,7 @@
       	<div class="footer clearfix">
 					<span class="loop">{{chatDetailData.circle.name}}</span>
 				  <p class="interact">
-				  	<span @click="praiseCount">赞：{{chatDetailData.praiseCount}}</span><span @click="praiseCount">回复：{{chatDetailData.commentCount}}</span>
+				  	<span @click="praiseCount">赞：{{count1}}</span><span @click="praiseCount">回复：{{chatDetailData.commentCount}}</span>
 				  </p>
 				</div>
       </div>
@@ -88,7 +88,7 @@
     },
     methods: {
      sendComment(datas){
-       axios.post('http://10.12.1.44:8080/api/v6/article/postComments',querystring.stringify({
+       axios.post('/api/v6/article/postComments',querystring.stringify({
        	appkey:'145FB9D1-2643-4B18-B9EA-8CD2C44FAC00',
        	client_id:'test',
        	token:'b876efafcff64f7580ed2175bcb6ea2e',
