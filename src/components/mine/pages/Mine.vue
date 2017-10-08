@@ -20,9 +20,7 @@
       </ul>
       <div class="divider"></div>
       <ul class="list">
-      	<router-link to="/Demo">
       	<li class="jb">优蓝金币</li>
-      	</router-link>
       	<li class="yz">预支工资</li>
       	<li class="cgz">查工资单</li>
       	<li class="fw">常用服务</li>

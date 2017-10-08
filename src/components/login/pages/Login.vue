@@ -5,11 +5,11 @@
   	  <img class="logo" src="../../../../static/images/logo.png" />
       <div class="login-form">
       	<div class="input-group tel">
-      	   <input class="input-control" type="text" placeholder="请输入您的手机号码" v-model="account" />
+      	   <input class="input-control" type="text" placeholder="请输入您的手机号码" v-model="account" maxlength="11" />
       	   <input class="btn-code" type="button" value="获取验证码" />
       	</div>
       	<div class="input-group code">
-      	   <input class="input-control" type="text" placeholder="请输入验证码" v-model="password" />
+      	   <input class="input-control" type="text" placeholder="请输入验证码" v-model.trim="password" maxlength="4" />
       	</div>
       	<div class="input-group login">
       	   <input class="btn-login" type="submit" value="登录" @click="login" />
@@ -39,7 +39,7 @@
     methods: {
 		     //登录逻辑
 		  	login(){
-		  		if(this.account!='' && this.password!=''){
+		  		if(this.validate()){
 		  			this.toLogin();
 		  		}
 		  	},
@@ -91,7 +91,24 @@
 		        //登录成功后
 		  			this.$router.push('/Mine');
 		  		},3000)
-		  	}
+		  	},
+		  	//验证表单有效性
+				validate(){
+					let phone_reg = /^1[3-9][0-9]{9}$/i;
+					let result = true;
+					let name_reg = /((^[\u4E00-\u9FA5]{2,12}$)|(^[a-zA-Z]{3,24}$))/;
+					let mobile = this.account;
+					let thekey = this.password;
+					if(mobile!=undefined&&!phone_reg.test(mobile)){
+						alert("请输入正确的手机号");
+						result = false;
+					}
+					if(thekey.length!=4){
+						alert("请输入正确的验证码!");
+						return false;
+					}
+					return result;
+				}
     }
   };
 </script>
