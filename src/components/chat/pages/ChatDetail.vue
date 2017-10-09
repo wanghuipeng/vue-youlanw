@@ -25,7 +25,7 @@
       	<div class="footer clearfix">
 					<span class="loop">{{chatDetailData.circle.name}}</span>
 				  <p class="interact">
-				  	<span @click="praiseCount">赞：{{count1}}</span><span @click="praiseCount">回复：{{chatDetailData.commentCount}}</span>
+				  	<span @click="praiseCount">赞：{{chatDetailData.praiseCount}}</span><span @click="praiseCount">回复：{{chatDetailData.commentCount}}</span>
 				  </p>
 				</div>
       </div>

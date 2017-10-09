@@ -26,7 +26,10 @@
 		    				<li class="last clearfix">
 		    					<span class="loop">{{item.circle.name}}</span>
 		    				  <p class="interact">
-		    				  	<span @click="praiseCount1(item)">赞：{{item.praiseCount}}</span><span>回复：{{item.commentCount}}</span>
+		    				  	<span @click="praiseCount1(item)">赞：{{item.praiseCount}}</span>
+		    				  	<router-link :to="{name: 'ChatDetail', params: {id: item.id}}">
+		    				  	<span>回复：{{item.commentCount}}</span>
+		    				  	</router-link>
 		    				  </p>
 		    				</li>
 		    				<li>
@@ -46,7 +49,7 @@
   </div>
 </template>
 <script>
-  import {fetchChatListByType} from '../../../store/api'
+  import {fetchChatListByType,fetchChatDetailByType} from '../../../store/api'
   import {mapGetters,mapActions} from 'vuex'
   import vComment from './Comment.vue'
   import axios from 'axios';
@@ -87,16 +90,28 @@
     },
     methods: {
     	praiseCount1(item){
-    		item.praiseCount++;
-    		axios.post('/api/v1/article/praise',querystring.stringify({
+    		
+    		axios.post('/api/v6/article/praise',querystring.stringify({
        	appkey:'145FB9D1-2643-4B18-B9EA-8CD2C44FAC00',
        	client_id:'test',
        	token:'7b79c6b4e3754797bf375c6367ef3ec1',
-       	artice_id:'59cb4fa52e1183596750853f'
+       	article_id:item.id
 		    })).then(response => {
-				      console.log(response);
+		    	    if(response.data.status == "success"){
+	              console.log("成功");
+	              var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "7b79c6b4e3754797bf375c6367ef3ec1", id = item.id ;
+					      fetchChatDetailByType(appkey, client_id, token , id)
+		              .then((data) => {
+		              	item.praiseCount++;
+		              });
+	          	}else if(response.data.status == "duplicate"){
+	          		console.log("重复");
+	          	}else if(response.data.status == "failure"){
+	          		console.log("失败");
+	          	}
+		    	    
 		        }).catch(function (error) {
-				　　console.log(error);
+				　　console.log("失败："+error);
 				});
     	},
       loadMore() {

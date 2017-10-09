@@ -55,10 +55,7 @@ export default new Router({
       path: '/Chat/ChatDetail/:id',
       name: 'ChatDetail',
       title: '话题详情',
-      component: ChatDetail,
-      meta:{
-      	keepAlive: true
-      }
+      component: ChatDetail
     },
     {
       path: '/Chat/PublishChat',
