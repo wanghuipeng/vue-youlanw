@@ -69,7 +69,7 @@
     	'count2'
     ]),
     mounted(){
-       var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", page = 1 , limit = this.limit;
+       var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "7b79c6b4e3754797bf375c6367ef3ec1", page = 1 , limit = this.limit;
         fetchChatListByType(appkey, client_id, token , page , limit)
               .then((data,index) => {
                 this.chatListData = data.ramble;
@@ -91,7 +91,7 @@
     		axios.post('/api/v1/article/praise',querystring.stringify({
        	appkey:'145FB9D1-2643-4B18-B9EA-8CD2C44FAC00',
        	client_id:'test',
-       	token:'b876efafcff64f7580ed2175bcb6ea2e',
+       	token:'7b79c6b4e3754797bf375c6367ef3ec1',
        	artice_id:'59cb4fa52e1183596750853f'
 		    })).then(response => {
 				      console.log(response);
@@ -101,7 +101,7 @@
     	},
       loadMore() {
       	this.limit += 10;
-			  var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", page = 1 , limit = this.limit;
+			  var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "7b79c6b4e3754797bf375c6367ef3ec1", page = 1 , limit = this.limit;
         fetchChatListByType(appkey, client_id, token , page , limit)
               .then((data) => {
                 this.chatListData = data.ramble;

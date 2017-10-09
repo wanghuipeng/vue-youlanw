@@ -139,68 +139,68 @@ x.dpr = v, x.addEventListener("resize", function() {
        cityName: '上海',
        cityId: '1',
        cities:[
-						    {
-						        "id": "1",
-						        "name": "上海"
-						    },
-						    {
-						        "id": "2",
-						        "name": "苏州"
-						    },
-						    {
-						        "id": "4",
-						        "name": "南京"
-						    },
-						    {
-						        "id": "9",
-						        "name": "重庆"
-						    },
-						    {
-						        "id": "8",
-						        "name": "成都"
-						    },
-						    {
-						        "id": "3",
-						        "name": "杭州"
-						    },
-						    {
-						        "id": "13",
-						        "name": "天津"
-						    },
-						    {
-						        "id": "16",
-						        "name": "武汉"
-						    },
-						    {
-						        "id": "10",
-						        "name": "厦门"
-						    },
-						    {
-						        "id": "5",
-						        "name": "宁波"
-						    },
-						    {
-						        "id": "12",
-						        "name": "无锡"
-						    },
-						    {
-						        "id": "40",
-						        "name": "合肥"
-						    },
-						    {
-						        "id": "15",
-						        "name": "南昌"
-						    },
-						    {
-						        "id": "14",
-						        "name": "北京"
-						    },
-						    {
-						        "id": "34",
-						        "name": "西安"
-						    }
-						],
-				jobListData: {
+				    {
+				        "id": "1",
+				        "name": "上海"
+				    },
+				    {
+				        "id": "2",
+				        "name": "苏州"
+				    },
+				    {
+				        "id": "4",
+				        "name": "南京"
+				    },
+				    {
+				        "id": "9",
+				        "name": "重庆"
+				    },
+				    {
+				        "id": "8",
+				        "name": "成都"
+				    },
+				    {
+				        "id": "3",
+				        "name": "杭州"
+				    },
+				    {
+				        "id": "13",
+				        "name": "天津"
+				    },
+				    {
+				        "id": "16",
+				        "name": "武汉"
+				    },
+				    {
+				        "id": "10",
+				        "name": "厦门"
+				    },
+				    {
+				        "id": "5",
+				        "name": "宁波"
+				    },
+				    {
+				        "id": "12",
+				        "name": "无锡"
+				    },
+				    {
+				        "id": "40",
+				        "name": "合肥"
+				    },
+				    {
+				        "id": "15",
+				        "name": "南昌"
+				    },
+				    {
+				        "id": "14",
+				        "name": "北京"
+				    },
+				    {
+				        "id": "34",
+				        "name": "西安"
+				    }
+				],
+		jobListData: {
           data: []
         },
         data_id: '1',
@@ -209,7 +209,7 @@ x.dpr = v, x.addEventListener("resize", function() {
       }
     },
     mounted(){
-    	 var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", branch_id = this.data_id;
+    	 var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "7b79c6b4e3754797bf375c6367ef3ec1", branch_id = this.data_id;
        fetchBannersByType(appkey, client_id, token , branch_id)
               .then((data) => {
                 this.bannerData = data;
@@ -259,7 +259,7 @@ x.dpr = v, x.addEventListener("resize", function() {
 	    	  console.log(this.cityName+":"+id)
 	    	  this.hideCity()
           //更新列表
-          var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", branch_id = this.cityId;
+          var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "7b79c6b4e3754797bf375c6367ef3ec1", branch_id = this.cityId;
 	    	  fetchJobListByType(appkey, client_id, token , branch_id)
               .then((data) => {
                 this.jobListData = data;

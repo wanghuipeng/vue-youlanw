@@ -80,7 +80,7 @@
     	'count2'
     ]),
     mounted(){
-      var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", id = this.$route.params.id ;
+      var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "7b79c6b4e3754797bf375c6367ef3ec1", id = this.$route.params.id ;
       fetchChatDetailByType(appkey, client_id, token , id)
               .then((data) => {
                 this.chatDetailData = data.entity;
@@ -91,13 +91,13 @@
        axios.post('/api/v6/article/postComments',querystring.stringify({
        	appkey:'145FB9D1-2643-4B18-B9EA-8CD2C44FAC00',
        	client_id:'test',
-       	token:'b876efafcff64f7580ed2175bcb6ea2e',
+       	token:'7b79c6b4e3754797bf375c6367ef3ec1',
        	id:this.$route.params.id,
        	title:'',
 		    content:datas,
 		    at_uid:''
 		    })).then(response => {
-		          var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", id = this.$route.params.id ;
+		          var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "7b79c6b4e3754797bf375c6367ef3ec1", id = this.$route.params.id ;
 				      fetchChatDetailByType(appkey, client_id, token , id)
 	              .then((data) => {
 	                this.chatDetailData = data.entity;

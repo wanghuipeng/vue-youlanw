@@ -26,7 +26,7 @@
       }
     },
     mounted(){
-      var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "b876efafcff64f7580ed2175bcb6ea2e", branch_id = 1;
+      var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "7b79c6b4e3754797bf375c6367ef3ec1", branch_id = 1;
       fetchRecommendByType(appkey, client_id, token , branch_id)
               .then((data) => {
                 this.recommendData = data;

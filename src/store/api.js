@@ -39,3 +39,7 @@ export function fetchChatListByType(appkey, client_id, token , page , limit) {
 export function fetchChatDetailByType(appkey, client_id, token , id) {
   return fetch(`/api/v6/article/detail?appkey=${appkey}&client_id=${client_id}&token=${token}&id=${id}`)
 }
+//根据企业id查询企业对象
+export function fetchJobItemByType(appkey, client_id, token , id) {
+  return fetch(`/api/v4/enterprise/getEnterpriseById?appkey=${appkey}&client_id=${client_id}&token=${token}&id=${id}`)
+}
