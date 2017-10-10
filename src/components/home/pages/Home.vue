@@ -328,7 +328,7 @@ li {
 .joblist-sty .joblist-each {
     padding: 15px 15px 10px 111px;
 }
-.nav-panel{width: 80px;}
+.nav-panel{width: 100px;}
 .nav-menu .user{background-position: 11px -82px;}
 .nav-menu .welfare{background-position: 9px -25px;}
 .nav-menu .record {

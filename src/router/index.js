@@ -16,11 +16,11 @@ export default new Router({
 	mode:'history',
 	base:'/',
 	scrollBehavior:(to, from, savedPosition) =>({
-    if(savedPosition) {
-        setTimeout(() => {
-            window.scrollTo(savedPosition.x, savedPosition.y)
-        }, 200)
-    }
+	if(savedPosition) {
+	    setTimeout(() => {
+	        window.scrollTo(savedPosition.x, savedPosition.y)
+	    }, 200)
+	}
   }),
   routes: [
 	{
