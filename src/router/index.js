@@ -12,8 +12,16 @@ import Login from '@/components/login/pages/Login.vue'
 
 
 Vue.use(Router)
-
 export default new Router({
+	mode:'history',
+	base:'/',
+	scrollBehavior:(to, from, savedPosition) =>({
+    if(savedPosition) {
+        setTimeout(() => {
+            window.scrollTo(savedPosition.x, savedPosition.y)
+        }, 200)
+    }
+  }),
   routes: [
 	{
 	  path: '/',
