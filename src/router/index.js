@@ -54,10 +54,7 @@ export default new Router({
       path: '/Chat',
       name: 'Chat',
       title: '说说',
-      component: Chat,
-      meta:{
-      	keepAlive: true
-      }
+      component: Chat
     },
     {
       path: '/Chat/ChatDetail/:id',

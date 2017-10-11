@@ -1,8 +1,11 @@
 <template>
   <div id="publishChat">
   	<div class="publishChat">
-  		<v-headerNav title="发布话题" publish="发布"></v-headerNav>
-      <textarea placeholder="这一刻，你想说点什么呢？"></textarea>
+  		<v-headerNav title="发布话题"></v-headerNav>
+  		<router-link :to="{name: 'Chat'}">
+  		<a href="javascript:void(0)" class="pushChat" @click="pushChat()">发布</a>
+  		</router-link>
+      <textarea placeholder="这一刻，你想说点什么呢？" v-model="content"></textarea>
       <div class="inputFile" v-if="!image">
       	<input type="file" accept="image/*" capture="camera" @change="onFileChange" />
       	<span  class="addImg"></span>
@@ -26,12 +29,15 @@
 </template>
 <script>
 	import vHeaderNav from '../../common/HeaderNav.vue'
+	import axios from 'axios';
+	var querystring = require('querystring');
 	
   export default{
   	components: {vHeaderNav},
     data(){
       return {
-      	images:[]
+      	images:[],
+      	content:''
       }
     },
     mounted(){
@@ -59,7 +65,22 @@
 	    delImage(index) {
 	      this.images.shift(index);
 	      this.images.splice(0,this.images.length);
-	    }
+	    },
+	    pushChat(){
+       axios.post('/api/v1/article/post',querystring.stringify({
+       	appkey:'145FB9D1-2643-4B18-B9EA-8CD2C44FAC00',
+       	client_id:'test',
+       	token:'7b79c6b4e3754797bf375c6367ef3ec1',
+       	circle_id:'565beaf9c4aae15967757b50',
+       	article_type:'1',
+		    content:this.content,
+		    large_image:this.images[0]
+		    })).then(response => {
+		         console.log(this.images[0])
+		        }).catch(function (error) {
+				　　console.log(error);
+				});
+      }
     }
   };
 </script>
@@ -71,5 +92,10 @@
 .inputFile .addImg{width: 100px;height: 100px;text-align: center;font-size: 50px;color:#999;position: absolute;left: 0;top: 0;z-index: 1;border: 1px solid #ccc;}
 .inputFile .addImg:before{width: 100px;height: 100px;display: block;position: absolute;content: "+";color: #eee;font-size: 68px;}
 .icon-del{background: url(../../../../static/images/mine-common.png) no-repeat;width: 30px;height: 30px;background-size: 40px;background-position:3px -323px;display: inline-block;opacity: 0.6;}
-
+.pushChat{    position: fixed;
+    right: 15px;
+    top: 12px;
+    color: #fff;
+    z-index: 100;
+    font-size: 15px;}
 </style>
