@@ -25,7 +25,7 @@
       	<div class="footer clearfix">
 					<span class="loop">{{chatDetailData.circle.name}}</span>
 				  <p class="interact">
-				  	<span @click="praiseCount">赞：{{chatDetailData.praiseCount}}</span><span @click="praiseCount">回复：{{chatDetailData.commentCount}}</span>
+				  	<span @click="praiseCount1(chatDetailData)">赞：{{chatDetailData.praiseCount}}</span><span @click="praiseCount">回复：{{chatDetailData.commentCount}}</span>
 				  </p>
 				</div>
       </div>
@@ -87,6 +87,31 @@
               });
     },
     methods: {
+    	praiseCount1(item){
+    		
+    		axios.post('/api/v6/article/praise',querystring.stringify({
+       	appkey:'145FB9D1-2643-4B18-B9EA-8CD2C44FAC00',
+       	client_id:'test',
+       	token:'7b79c6b4e3754797bf375c6367ef3ec1',
+       	article_id:item.id
+		    })).then(response => {
+		    	    if(response.data.status == "success"){
+	              console.log("成功");
+	              var appkey = "145FB9D1-2643-4B18-B9EA-8CD2C44FAC00", client_id = "test", token = "7b79c6b4e3754797bf375c6367ef3ec1", id = item.id ;
+					      fetchChatDetailByType(appkey, client_id, token , id)
+		              .then((data) => {
+		              	item.praiseCount++;
+		              });
+	          	}else if(response.data.status == "duplicate"){
+	          		console.log("重复");
+	          	}else if(response.data.status == "failure"){
+	          		console.log("失败");
+	          	}
+		    	    
+		        }).catch(function (error) {
+				　　console.log("失败："+error);
+				});
+    	},
      sendComment(datas){
        axios.post('/api/v6/article/postComments',querystring.stringify({
        	appkey:'145FB9D1-2643-4B18-B9EA-8CD2C44FAC00',
